@@ -1,0 +1,4 @@
+interface:
+  display_name: "Recipe to Markdown"
+  short_description: "Turn online recipes into image-rich Markdown files."
+  default_prompt: "Convert this recipe URL into a Markdown recipe file with one image:"
