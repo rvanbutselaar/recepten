@@ -12,7 +12,7 @@ python3 skills/recipe-to-markdown/scripts/convert_recipe.py \
   "https://example.com/recipe" --output-dir recipes
 ```
 
-The command prefers Recipe schema.org data, then falls back to the page's article body when it has clearly separated recipe headings and content. It writes a slugged `.md` file and stores one image beside it in `images/`. It detects the page language from Recipe schema data (or the page's `lang` attribute) and localizes its generated headings and labels. It preserves ingredient quantities and instruction text; do not invent missing details.
+The command prefers Recipe schema.org data, then falls back to the page's article body when it has clearly separated recipe headings and content. It writes a slugged `.md` file and stores one image beside it in `images/`. It detects the page language from Recipe schema data (or the page's `lang` attribute) and localizes its generated headings and labels. It preserves ingredient quantities and instruction text; do not invent missing details. After every successful import, it also rebuilds the recipe index in `README.md`.
 
 ## Output rules
 

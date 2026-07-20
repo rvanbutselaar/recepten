@@ -243,6 +243,37 @@ def fallback_section_lines(sections: list[tuple[str, list[str]]]) -> list[str]:
     return lines
 
 
+def recipe_title(markdown: Path) -> str:
+    content = markdown.read_text(encoding="utf-8")
+    title_match = re.search(r'^title:\s*("(?:[^"\\]|\\.)*")\s*$', content, re.MULTILINE)
+    if title_match:
+        return str(json.loads(title_match.group(1)))
+    heading_match = re.search(r"^#\s+(.+?)\s*$", content, re.MULTILINE)
+    return heading_match.group(1) if heading_match else markdown.stem.replace("-", " ").title()
+
+
+def update_recipe_index(destination: Path) -> None:
+    """Write the recipe index in the README next to the recipes directory."""
+    recipes = sorted(
+        ((recipe_title(markdown), markdown) for markdown in destination.glob("*.md")),
+        key=lambda item: item[0].casefold(),
+    )
+    readme = destination.parent / "README.md"
+    lines = [
+        "# Recepten",
+        "",
+        "Een verzameling recepten voor de barbecue en kamado.",
+        "",
+        "## Receptenindex",
+        "",
+        "<!-- recipes-index:start -->",
+        *(f"- [{title}]({destination.name}/{markdown.name})" for title, markdown in recipes),
+        "<!-- recipes-index:end -->",
+        "",
+    ]
+    readme.write_text("\n".join(lines), encoding="utf-8")
+
+
 def main() -> int:
     args = argparse.ArgumentParser(description=__doc__)
     args.add_argument("url")
@@ -293,6 +324,7 @@ def main() -> int:
         lines.extend([f"{labels['source']}: [{urlparse(options.url).netloc}]({options.url})", ""])
         markdown = destination / f"{name}.md"; destination.mkdir(parents=True, exist_ok=True)
         markdown.write_text("\n".join(lines), encoding="utf-8")
+        update_recipe_index(destination)
         print(markdown)
         print(image_path)
         return 0
