@@ -11,5 +11,6 @@ Een verzameling recepten voor de barbecue en kamado.
 - [Gegrilde ananas met vanille-ijs en knettersuiker](recipes/gegrilde-ananas-met-vanille-ijs-en-knettersuiker.md)
 - [Pigs in a Blanket](recipes/pigs-in-a-blanket.md)
 - [Pulled pork low & slow](recipes/pulled-pork-low-slow.md)
+- [Shotgun Shells/ Gevulde Canneloni BBQ recept](recipes/shotgun-shells-gevulde-canneloni-bbq-recept.md)
 - [Snoeppaprika poppers voor een kinderfeestje](recipes/snoeppaprika-poppers-voor-een-kinderfeestje.md)
 <!-- recipes-index:end -->
