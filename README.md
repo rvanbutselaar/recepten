@@ -1,6 +1,6 @@
 # Recepten
 
-Een verzameling recepten voor de barbecue en kamado.
+Een verzameling recepten voor de barbecue en Kamado.
 
 ## Receptenindex
 
